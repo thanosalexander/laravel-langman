@@ -77,7 +77,7 @@ class SyncCommand extends Command
                 $fileContent = $this->manager->getFileContent($path);
 
                 if (isset($allKeysInFiles[$fileName])) {
-                    $missingKeys = array_diff($allKeysInFiles[$fileName], array_keys(array_dot($fileContent)));
+                    $missingKeys = array_diff($allKeysInFiles[$fileName], array_keys(Arr($fileContent)));
 
                     foreach ($missingKeys as $i => $missingKey) {
                         if (Arr::has($fileContent, $missingKey)) {
