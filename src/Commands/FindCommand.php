@@ -109,10 +109,17 @@ class FindCommand extends Command
             $original = [];
 
             foreach ($allLanguages as $languageKey) {
-                $original[$languageKey] =
-                    array_key_exists($languageKey,$values)
-                        ? $values[$languageKey]
-                        : isset($filesContent[$fileName][$languageKey][$key]) ? $filesContent[$fileName][$languageKey][$key] : '';
+                if(array_key_exists($languageKey,$values)){
+                    $original[$languageKey] = $values[$languageKey];
+                }
+                else{
+                    if(isset($filesContent[$fileName][$languageKey][$key])){
+                        $original[$languageKey] = $filesContent[$fileName][$languageKey][$key];
+                    }
+                    else{
+                        $original[$languageKey] = '';
+                    }
+                }
             }
 
             // Sort the language values based on language name
