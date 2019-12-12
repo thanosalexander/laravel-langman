@@ -110,7 +110,7 @@ class FindCommand extends Command
 
             foreach ($allLanguages as $languageKey) {
                 $original[$languageKey] =
-                    isset($values[$languageKey])
+                    array_key_exists($languageKey,$values)
                         ? $values[$languageKey]
                         : isset($filesContent[$fileName][$languageKey][$key]) ? $filesContent[$fileName][$languageKey][$key] : '';
             }
